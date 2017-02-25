@@ -7,6 +7,8 @@ namespace Infrastructure.Server.Initialization
 {
     public static class Bootstrap
     {
+        private const string InfrastructureServerSection = "InfrastructureServerSection";
+
         public static void Start()
         {
             InitDataBase();
@@ -14,7 +16,7 @@ namespace Infrastructure.Server.Initialization
 
         private static void InitDataBase()
         {
-            var section = ConfigurationManager.GetSection("InfrastructureServerSection") as InfrastructureServerSection;
+            var section = ConfigurationManager.GetSection(InfrastructureServerSection) as InfrastructureServerSection;
             var initDataBase = InitDataBaseFactory<InitStrategyBase>.GetInstance(section);
             initDataBase.Init();
         }
