@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.DataBase.Initialization
 {
-    public class SimpleInitStrategy : InitStrategyBase
+    public class SimpleNHInitStrategy : InitStrategyBase
     {
         public override void Init()
         {

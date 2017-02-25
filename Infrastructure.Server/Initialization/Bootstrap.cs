@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Configuration;
+﻿using System.Configuration;
 using Infrastructure.Server.Configuration;
+using Infrastructure.Server.Initialization.Factories;
+using Infrastructure.DataBase.Initialization;
 
 namespace Infrastructure.Server.Initialization
 {
@@ -12,14 +9,14 @@ namespace Infrastructure.Server.Initialization
     {
         public static void Start()
         {
+            InitDataBase();
+        }
+
+        private static void InitDataBase()
+        {
             var section = ConfigurationManager.GetSection("InfrastructureServerSection") as InfrastructureServerSection;
-
-            Type T = Type.GetType(section.InitDataBase.Type + ", " + section.InitDataBase.Assembly);
-
-            var jj = Activator.CreateInstance(T) as Infrastructure.DataBase.Initialization.InitStrategyBase;
-
-            jj.Init();
-
+            var initDataBase = InitDataBaseFactory<InitStrategyBase>.GetInstance(section);
+            initDataBase.Init();
         }
     }
 }

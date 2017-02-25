@@ -41,9 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\InitDataBase.cs" />
     <Compile Include="Configuration\InfrastructureServerSection.cs" />
     <Compile Include="Initialization\Bootstrap.cs" />
+    <Compile Include="Initialization\Factories\InitDataBaseFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

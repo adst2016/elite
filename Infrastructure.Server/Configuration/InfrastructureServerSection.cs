@@ -4,23 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using System.ComponentModel;
 
 namespace Infrastructure.Server.Configuration
 {
     public class InfrastructureServerSection : ConfigurationSection
     {
-        [ConfigurationProperty("InitDataBase", IsKey = false, IsRequired = true)]
-        public InitDataBase InitDataBase
+        [ConfigurationProperty("InitDataBase")]
+        [TypeConverter(typeof(TypeNameConverter))]        
+        public Type InitDataBase
         {
             get
             {
-                return base["InitDataBase"] as InitDataBase;
+                return (Type)base["InitDataBase"];
             }
-
             set
             {
                 base["InitDataBase"] = value;
             }
         }
+
     }
 }
