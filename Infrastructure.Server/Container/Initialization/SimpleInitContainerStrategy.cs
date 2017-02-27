@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.DataBase.Initialization
+namespace Infrastructure.Server.Container.Initialization
 {
-    public class SimpleNHInitStrategy : InitDataBaseStrategyBase
+    public class SimpleInitContainerStrategy : InitContainerStrategyBase
     {
         public override void Init()
         {

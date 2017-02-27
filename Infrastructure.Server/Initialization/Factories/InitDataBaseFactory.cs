@@ -4,7 +4,7 @@ using Infrastructure.Server.Configuration;
 
 namespace Infrastructure.Server.Initialization.Factories
 {
-    internal static class InitDataBaseFactory<T> where T: InitStrategyBase
+    internal static class InitDataBaseFactory<T> where T: InitDataBaseStrategyBase
     {
         public static T GetInstance(InfrastructureServerSection configSection)
         {

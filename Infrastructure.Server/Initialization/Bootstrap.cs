@@ -2,6 +2,7 @@
 using Infrastructure.Server.Configuration;
 using Infrastructure.Server.Initialization.Factories;
 using Infrastructure.DataBase.Initialization;
+using Infrastructure.Server.Container.Initialization;
 
 namespace Infrastructure.Server.Initialization
 {
@@ -11,13 +12,26 @@ namespace Infrastructure.Server.Initialization
 
         public static void Start()
         {
-            InitDataBase();
+            var section = GetMainSection();
+
+            InitContainer(section);
+            InitDataBase(section);
         }
 
-        private static void InitDataBase()
+        private static InfrastructureServerSection GetMainSection()
         {
-            var section = ConfigurationManager.GetSection(InfrastructureServerSection) as InfrastructureServerSection;
-            var initDataBase = InitDataBaseFactory<InitStrategyBase>.GetInstance(section);
+            return ConfigurationManager.GetSection(InfrastructureServerSection) as InfrastructureServerSection;
+        }
+
+        private static void InitContainer(InfrastructureServerSection section)
+        {
+            var initContainer = InitContainerFactory<InitContainerStrategyBase>.GetInstance(section);
+            initContainer.Init();
+        }
+
+        private static void InitDataBase(InfrastructureServerSection section)
+        {
+            var initDataBase = InitDataBaseFactory<InitDataBaseStrategyBase>.GetInstance(section);
             initDataBase.Init();
         }
     }

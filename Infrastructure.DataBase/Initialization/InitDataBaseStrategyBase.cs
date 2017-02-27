@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.DataBase.Initialization
 {
-    public class SimpleNHInitStrategy : InitDataBaseStrategyBase
+    public abstract class InitDataBaseStrategyBase
     {
-        public override void Init()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract void Init();
     }
 }

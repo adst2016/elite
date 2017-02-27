@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Shared
+namespace Infrastructure.Shared.Common.Services
 {
-    public class Class1
+    public interface ILoggingService : IService
     {
+
     }
 }

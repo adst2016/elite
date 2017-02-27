@@ -40,9 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\EntityWithIdBase.cs" />
     <Compile Include="Entities\EntityBase.cs" />
     <Compile Include="Entities\EntityWithDescriptionBase.cs" />
-    <Compile Include="Initialization\InitStrategyBase.cs" />
+    <Compile Include="Initialization\InitDataBaseStrategyBase.cs" />
     <Compile Include="Initialization\SimpleNHInitStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

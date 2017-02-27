@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.DataBase.Initialization
+namespace Infrastructure.Server.Container.Initialization
 {
-    public abstract class InitStrategyBase
+    public abstract class InitContainerStrategyBase
     {
         public abstract void Init();
     }

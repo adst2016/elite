@@ -20,5 +20,18 @@ namespace Infrastructure.Server.Configuration
             }
         }
 
+        [ConfigurationProperty("InitContainerStrategy")]
+        [TypeConverter(typeof(TypeNameConverter))]
+        public Type InitContainerStrategy
+        {
+            get
+            {
+                return (Type)base["InitContainerStrategy"];
+            }
+            set
+            {
+                base["InitContainerStrategy"] = value;
+            }
+        }
     }
 }
