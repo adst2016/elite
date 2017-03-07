@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Shared
+namespace Infrastructure.Shared.Components
 {
-    public interface ILogic
+    public interface IRepository : IComponent
     {
     }
 }

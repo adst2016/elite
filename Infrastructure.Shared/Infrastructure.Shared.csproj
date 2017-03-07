@@ -32,6 +32,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\..\..\solano\trunk\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,8 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Services\ILoggingService.cs" />
-    <Compile Include="ILogic.cs" />
-    <Compile Include="IService.cs" />
+    <Compile Include="Components\IComponent.cs" />
+    <Compile Include="Components\ILogic.cs" />
+    <Compile Include="Components\IRepository.cs" />
+    <Compile Include="Initialization\InitializationContext.cs" />
+    <Compile Include="Components\IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

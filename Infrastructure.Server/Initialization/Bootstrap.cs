@@ -3,6 +3,9 @@ using Infrastructure.Server.Configuration;
 using Infrastructure.Server.Initialization.Factories;
 using Infrastructure.DataBase.Initialization;
 using Infrastructure.Server.Container.Initialization;
+using Infrastructure.Shared.Initialization;
+using System.Web.Mvc;
+using log4net.Config;
 
 namespace Infrastructure.Server.Initialization
 {
@@ -10,8 +13,12 @@ namespace Infrastructure.Server.Initialization
     {
         private const string InfrastructureServerSection = "InfrastructureServerSection";
 
-        public static void Start()
+        private static ControllerBuilder controllerBuilder;
+
+        public static void Start(InitializationContext initializationContext)
         {
+            controllerBuilder = initializationContext.controllerBuilder;
+
             var section = GetMainSection();
 
             InitContainer(section);
@@ -26,7 +33,7 @@ namespace Infrastructure.Server.Initialization
         private static void InitContainer(InfrastructureServerSection section)
         {
             var initContainer = InitContainerFactory<InitContainerStrategyBase>.GetInstance(section);
-            initContainer.Init();
+            initContainer.Init(controllerBuilder);
         }
 
         private static void InitDataBase(InfrastructureServerSection section)

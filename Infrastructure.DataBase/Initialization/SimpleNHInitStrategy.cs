@@ -10,7 +10,7 @@ namespace Infrastructure.DataBase.Initialization
     {
         public override void Init()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }
