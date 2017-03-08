@@ -13,7 +13,7 @@ namespace Infrastructure.Server.Container.SimpleInstallers
             AssemblyFilter assemblyFilter = new AssemblyFilter(AppDomain.CurrentDomain.BaseDirectory + "/bin");
 
             container.Register(Classes.FromAssemblyInDirectory(assemblyFilter)
-                .BasedOn<IComponent>()                
+                .BasedOn<IComponent>()
                 .WithServiceFirstInterface()
                 .LifestyleTransient());
         }

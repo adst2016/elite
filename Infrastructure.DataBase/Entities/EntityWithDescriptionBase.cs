@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.DataBase.Entities
 {
-    public class EntityWithDescriptionBase : EntityBase
+    public class EntityWithDescriptionBase : EntityWithIdBase
     {
 
     }
