@@ -12,6 +12,8 @@ namespace Infrastructure.Server.Container.SimpleInstallers
         {            
             AssemblyFilter assemblyFilter = new AssemblyFilter(AppDomain.CurrentDomain.BaseDirectory + "/bin");
 
+            //todo: do sprawdzenia!!!
+            //FromAssemblyInThisApplication
             container.Register(Classes.FromAssemblyInDirectory(assemblyFilter)
                 .BasedOn<IComponent>()
                 .WithServiceFirstInterface()

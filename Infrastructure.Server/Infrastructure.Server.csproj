@@ -71,12 +71,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\InfrastructureServerSection.cs" />
-    <Compile Include="Container\Facilities\PersistenceFacility.cs" />
     <Compile Include="Container\SimpleInstallers\ComponentsInstaller.cs" />
     <Compile Include="Container\SimpleInstallers\ControllersInstaller.cs" />
     <Compile Include="Container\Initialization\InitContainerStrategyBase.cs" />
     <Compile Include="Container\Initialization\SimpleInitContainerStrategy.cs" />
-    <Compile Include="Container\SimpleInstallers\PersistenceInstaller.cs" />
     <Compile Include="Container\SimpleInstallers\RepositoriesInstaller.cs" />
     <Compile Include="Container\WindsorControllerFactory.cs" />
     <Compile Include="Initialization\Bootstrap.cs" />
@@ -102,7 +100,9 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Container\Facilities\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

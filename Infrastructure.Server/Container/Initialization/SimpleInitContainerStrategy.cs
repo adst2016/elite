@@ -15,9 +15,8 @@ namespace Infrastructure.Server.Container.Initialization
 
             var componentInstaller = installerFactory.CreateInstance(typeof(ComponentsInstaller));
             var controllersInstaller = installerFactory.CreateInstance(typeof(ControllersInstaller));
-            var persistenceInstaller = installerFactory.CreateInstance(typeof(PersistenceInstaller));
 
-            IWindsorInstaller[] installers = { componentInstaller, persistenceInstaller, controllersInstaller };
+            IWindsorInstaller[] installers = { componentInstaller, controllersInstaller };
 
             container = new WindsorContainer()
                 .Install(installers);

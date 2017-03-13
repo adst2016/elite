@@ -33,5 +33,33 @@ namespace Infrastructure.Server.Configuration
                 base["InitContainerStrategy"] = value;
             }
         }
+
+        [ConfigurationProperty("MigrationType")]
+        [TypeConverter(typeof(TypeNameConverter))]
+        public Type MigrationType
+        {
+            get
+            {
+                return (Type)base["MigrationType"];
+            }
+            set
+            {
+                base["MigrationType"] = value;
+            }
+        }
+
+        [ConfigurationProperty("ConventionType")]
+        [TypeConverter(typeof(TypeNameConverter))]
+        public Type ConventionType
+        {
+            get
+            {
+                return (Type)base["ConventionType"];
+            }
+            set
+            {
+                base["ConventionType"] = value;
+            }
+        }
     }
 }

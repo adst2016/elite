@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Attributes\DoNotMapAttribute.cs" />
     <Compile Include="Components\IComponent.cs" />
     <Compile Include="Components\ILogic.cs" />
     <Compile Include="Components\IRepository.cs" />
@@ -54,7 +53,9 @@
   <ItemGroup>
     <Content Include="Common\Services\TextFile1.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Common\Attributes\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

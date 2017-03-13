@@ -1,7 +1,9 @@
-﻿namespace Infrastructure.DataBase.Initialization
+﻿using System;
+
+namespace Infrastructure.DataBase.Initialization
 {
     public abstract class InitDataBaseStrategyBase
     {
-        public abstract void Init();
+        public abstract void Init(Type migrationType, Type conventionType);
     }
 }
