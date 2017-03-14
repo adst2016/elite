@@ -51,7 +51,7 @@ namespace Infrastructure.Server.Initialization
         private static void InitDataBase(InfrastructureServerSection section)
         {
             var initDataBase = InitDataBaseFactory<InitDataBaseStrategyBase>.GetInstance(section);
-            initDataBase.Init(section.MigrationType, section.ConventionType);
+            initDataBase.Init();
         }
     }
 }

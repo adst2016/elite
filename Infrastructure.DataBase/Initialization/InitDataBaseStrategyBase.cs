@@ -4,6 +4,6 @@ namespace Infrastructure.DataBase.Initialization
 {
     public abstract class InitDataBaseStrategyBase
     {
-        public abstract void Init(Type migrationType, Type conventionType);
+        public abstract void Init();
     }
 }

@@ -1,34 +1,41 @@
 ﻿using FluentNHibernate.Automapping;
 using FluentNHibernate.Cfg;
-
+using Infrastructure.DataBase.Configuration;
 using Infrastructure.DataBase.Entities;
 using Infrastructure.DataBase.Migration;
 
-using NHibernate.Cfg;
-
 using System;
+using System.Configuration;
 using System.Reflection;
 
 namespace Infrastructure.DataBase.Initialization
 {
     public class SimpleNHInitStrategy : InitDataBaseStrategyBase
     {
-        public override void Init(Type migrationType, Type conventionType)
+        private const string InfrastructureDataBaseSection = "InfrastructureDataBaseSection";
+
+        public override void Init()
         {
-            var cfg = new Configuration();
+            var section = GetDataBaseSection();
+
+            var cfg = new NHibernate.Cfg.Configuration();
             cfg.Configure();
 
-            var config = BuildDatabaseConfiguration(cfg, conventionType);
+            var config = BuildDatabaseConfiguration(cfg, section.ConventionType);
             config.Configure();
 
             var connectionString = cfg.GetProperty("connection.connection_string");
-
-            Runner.MigrateToLatest(connectionString, migrationType);
+            Runner.MigrateToLatest(connectionString, section.MigrationType);
 
             var sessionFactory = config.BuildSessionFactory();
         }
 
-        private Configuration BuildDatabaseConfiguration(Configuration cfg, Type conventionType)
+        private static InfrastructureDataBaseSection GetDataBaseSection()
+        {
+            return ConfigurationManager.GetSection(InfrastructureDataBaseSection) as InfrastructureDataBaseSection;
+        }
+
+        private NHibernate.Cfg.Configuration BuildDatabaseConfiguration(NHibernate.Cfg.Configuration cfg, Type conventionType)
         {
             return Fluently.Configure(cfg)
                 .Mappings(m => m.AutoMappings.Add(CreateMappingModel()

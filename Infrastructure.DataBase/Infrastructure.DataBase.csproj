@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\InfrastructureDataBaseSection.cs" />
     <Compile Include="Conventions\SimpleConvention.cs" />
     <Compile Include="Entities\EntityWithIdBase.cs" />
     <Compile Include="Entities\EntityBase.cs" />
