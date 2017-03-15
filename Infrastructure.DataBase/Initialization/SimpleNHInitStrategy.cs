@@ -3,7 +3,7 @@ using FluentNHibernate.Cfg;
 using Infrastructure.DataBase.Configuration;
 using Infrastructure.DataBase.Entities;
 using Infrastructure.DataBase.Migration;
-
+using Infrastructure.DataBase.NHibernateSession;
 using System;
 using System.Configuration;
 using System.Reflection;
@@ -28,6 +28,7 @@ namespace Infrastructure.DataBase.Initialization
             Runner.MigrateToLatest(connectionString, section.MigrationType);
 
             var sessionFactory = config.BuildSessionFactory();
+            NHibernateSessionManager.SessionFactory = sessionFactory;
         }
 
         private static InfrastructureDataBaseSection GetDataBaseSection()

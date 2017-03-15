@@ -1,20 +1,22 @@
 ﻿using Infrastructure.DataBase.Entities;
+using Infrastructure.DataBase.NHibernateSession;
 using NHibernate;
 
 namespace Infrastructure.DataBase.Repositories
 {
-    public class RepositoryBase<T> : IRepository<T> where T : EntityBase
+    public class RepositoryBase<T, IdT> : IRepository<T, IdT> where T : EntityBase
     {
-        private readonly ISession session;
-
-        public RepositoryBase(ISession session)
+        private ISession Session
         {
-            this.session = session;
-        }
+            get
+            {
+                return NHibernateSessionManager.GetSession();
+            }
+        }        
 
-        public T GetById(object id)
+        public T GetById(IdT id)
         {
-            return session.Get<T>(id);
+            return Session.Get<T>(id);
         }
     }
 }
