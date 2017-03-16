@@ -8,8 +8,8 @@ namespace Infrastructure.DataBase.Conventions
         public void Apply(IIdentityInstance instance)
         {
             //instance.Column(instance.EntityType.Name + "_Id");
-            instance.Column("IID");
-            instance.GeneratedBy.Native();
+            //instance.Column("IID");
+            //instance.GeneratedBy.Native();
         }
 
         public void Apply(IClassInstance instance)

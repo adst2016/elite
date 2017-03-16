@@ -13,10 +13,11 @@ namespace Infrastructure.Server.Container.Initialization
         {
             InstallerFactory installerFactory = new InstallerFactory();
 
+            var repositoriesInstaller = installerFactory.CreateInstance(typeof(RepositoriesInstaller));
             var componentInstaller = installerFactory.CreateInstance(typeof(ComponentsInstaller));
             var controllersInstaller = installerFactory.CreateInstance(typeof(ControllersInstaller));
 
-            IWindsorInstaller[] installers = { componentInstaller, controllersInstaller };
+            IWindsorInstaller[] installers = {repositoriesInstaller, componentInstaller, controllersInstaller };
 
             container = new WindsorContainer()
                 .Install(installers);

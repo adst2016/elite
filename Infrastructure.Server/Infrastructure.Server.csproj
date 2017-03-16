@@ -75,6 +75,7 @@
     <Compile Include="Container\SimpleInstallers\ControllersInstaller.cs" />
     <Compile Include="Container\Initialization\InitContainerStrategyBase.cs" />
     <Compile Include="Container\Initialization\SimpleInitContainerStrategy.cs" />
+    <Compile Include="Container\SimpleInstallers\InstallerHelper.cs" />
     <Compile Include="Container\SimpleInstallers\RepositoriesInstaller.cs" />
     <Compile Include="Container\WindsorControllerFactory.cs" />
     <Compile Include="Initialization\Bootstrap.cs" />
@@ -99,9 +100,7 @@
   <ItemGroup>
     <None Include="app.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Container\Facilities\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
