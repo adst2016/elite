@@ -10,7 +10,7 @@ namespace Infrastructure.Server.Container.SimpleInstallers
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(Classes.FromAssemblyInDirectory(InstallerHelper.AssemblyFilter)
-                                   .BasedOn<IController>()                                   
+                                   .BasedOn<IController>()
                                    .LifestyleTransient());
         }
     }
