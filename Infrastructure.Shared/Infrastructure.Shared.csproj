@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\MetodResult.cs" />
+    <Compile Include="Common\MethodResult.cs" />
     <Compile Include="Components\IComponent.cs" />
     <Compile Include="Components\ILogic.cs" />
     <Compile Include="Components\IRepository.cs" />

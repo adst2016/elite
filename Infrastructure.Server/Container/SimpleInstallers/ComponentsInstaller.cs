@@ -1,9 +1,7 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using System;
 using Infrastructure.Shared.Components;
-using System.Web;
 
 namespace Infrastructure.Server.Container.SimpleInstallers
 {
@@ -13,7 +11,7 @@ namespace Infrastructure.Server.Container.SimpleInstallers
         {
             container.Register(Classes.FromAssemblyInDirectory(InstallerHelper.AssemblyFilter)
                 .BasedOn<IComponent>()
-                .WithServiceFirstInterface()
+                .WithServiceAllInterfaces()
                 .LifestyleTransient());
         }
     }

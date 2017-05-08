@@ -79,6 +79,10 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Infrastructure.Common\Infrastructure.Common.csproj">
+      <Project>{8f2180e6-e913-4cdf-bb7a-16aef687d5a1}</Project>
+      <Name>Infrastructure.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Infrastructure.Shared\Infrastructure.Shared.csproj">
       <Project>{bea14284-7168-4960-80d4-87d6d0f6ddec}</Project>
       <Name>Infrastructure.Shared</Name>

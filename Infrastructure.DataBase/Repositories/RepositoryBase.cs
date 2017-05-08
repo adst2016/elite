@@ -4,10 +4,13 @@ using Infrastructure.DataBase.NHibernateSession;
 using Infrastructure.Shared.Common;
 using NHibernate;
 using System.Collections.Generic;
+using Infrastructure.Common.Authentication;
+using System.Security.Claims;
+using System.Threading;
 
 namespace Infrastructure.DataBase.Repositories
 {
-    public class RepositoryBase<T, IdT> : IRepository<T, IdT> where T : EntityWithIdBase
+    public class RepositoryBase<T> : IRepository<T> where T : EntityWithIdBase
     {
         protected ISession Session
         {
@@ -15,9 +18,17 @@ namespace Infrastructure.DataBase.Repositories
             {
                 return NHibernateSessionManager.GetSession();
             }
-        }        
+        }
 
-        public T GetById(IdT id)
+        public AppUser CurrentUser
+        {
+            get
+            {
+                return new AppUser(Thread.CurrentPrincipal as ClaimsPrincipal);
+            }
+        }
+
+        public T GetById(Guid id)
         {
             return Session.Get<T>(id);
         }
@@ -27,28 +38,41 @@ namespace Infrastructure.DataBase.Repositories
             return Session.CreateCriteria<T>().List<T>();
         }        
 
-        public MetodResult SaveAndFlush(T entity)
-        {
+        public MethodResult SaveAndFlush(T entity)
+        {            
+            entity.Id = Guid.NewGuid();
+
             entity.TimeCreation = DateTime.Now;
             entity.TimeUpdate = DateTime.Now;
+
+            entity.UserCreation = CurrentUser.Id;
+            entity.UserUpdate = CurrentUser.Id;
 
             Session.Save(entity);
             Session.Flush();
 
-            return MetodResult.ReturnSuccess();
+            return MethodResult.ReturnSuccess();
         }
 
-        public MetodResult SaveOrUpdateAndFlush(T entity)
+        public MethodResult SaveOrUpdateAndFlush(T entity)
         {
             if (entity.Id == Guid.Empty)
                 return SaveAndFlush(entity);
 
             entity.TimeUpdate = DateTime.Now;
+            entity.UserUpdate = CurrentUser.Id;
 
             Session.SaveOrUpdate(entity);
             Session.Flush();
 
-            return MetodResult.ReturnSuccess();
+            return MethodResult.ReturnSuccess();
+        }
+
+        public MethodResult DeleteAndFlush(T entity)
+        {
+            Session.Delete(entity);
+            Session.Flush();
+            return MethodResult.ReturnSuccess();
         }
     }
 }
