@@ -2,7 +2,7 @@
 using Infrastructure.Fundamental.DtoBase;
 using Infrastructure.Shared.Components;
 
-namespace Solano.Web.Areas.Administration.Models.MappingServices
+namespace Infrastructure.Fundamental.MappingServiceBase
 {
     public interface IMapping<T, DtoInfoT, DtoCreateT> : IComponent where T : EntityWithDescriptionBase
                                                                     where DtoInfoT : DtoInfoWithDescriptionBase

@@ -2,7 +2,7 @@
 using System.Security.Claims;
 using System.Web.Mvc;
 
-namespace Infrastructure.Fundamental.Controllers
+namespace Infrastructure.Fundamental.ControllerBase
 {
     public abstract class AppControllerBase : Controller
     {

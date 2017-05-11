@@ -3,7 +3,7 @@ using Infrastructure.DataBase.Repositories;
 using Infrastructure.Fundamental.DtoBase;
 using Infrastructure.Shared.Common;
 using Infrastructure.Shared.Components;
-using Solano.Web.Areas.Administration.Models.MappingServices;
+using Infrastructure.Fundamental.MappingServiceBase;
 using System;
 using System.Collections.Generic;
 
